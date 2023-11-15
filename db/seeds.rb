@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "faker"
+
+puts 'Creating 3 fake flats...'
+
+3.times do
+  flat = Flat.new(name: Faker::Company.name, address: Faker::Address.street_address, description: Faker::Marketing.buzzwords, price_per_night: Faker::Commerce.price, number_of_guests: Faker::Number.between(from: 1, to: 10))
+  # puts flat.valid?
+  flat.save!
+end
+
+puts 'Finished!'
